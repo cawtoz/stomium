@@ -21,7 +21,6 @@ object EventBus {
     inline fun <reified T : Event> registerEvent(
         noinline handler: (T) -> Unit
     ) {
-        println("Registering event: ${T::class.simpleName}")
         eventNode.addListener(T::class.java, handler)
         MinecraftServer.getGlobalEventHandler().addChild(eventNode)
     }
