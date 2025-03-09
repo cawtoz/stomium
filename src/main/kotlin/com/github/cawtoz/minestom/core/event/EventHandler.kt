@@ -5,7 +5,7 @@ import net.minestom.server.event.EventNode
 import net.minestom.server.event.EventListener
 
 /**
- * Base class for event handlers in Minestom.
+ * Base class for event handlers.
  * This class allows grouping multiple event listeners and registering them easily.
  */
 abstract class EventHandler(eventSetup: EventHandler.() -> Unit) {

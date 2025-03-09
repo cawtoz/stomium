@@ -6,7 +6,7 @@ import net.minestom.server.event.EventListener
 import net.minestom.server.event.EventNode
 
 /**
- * EventBus is a global event manager that simplifies event registration in Minestom.
+ * EventBus is a global event manager that simplifies event registration.
  * It provides utility functions for registering event listeners and event handlers.
  */
 object EventBus {
