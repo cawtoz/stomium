@@ -1,6 +1,6 @@
 # Minestone Core
 
-This is a development project based on **Minestom**, a lightweight and highly customizable Minecraft server. The main goal is to create a set of utilities to simplify the development of Minecraft servers.
+This is a development project based on **[Minestom](https://minestom.net/)**, a lightweight and highly customizable Minecraft server. The main goal is to create a set of utilities to simplify the development of Minecraft servers.
 
 ## 🚀 Current Features
 - **Event module** to easily register and manage events.
