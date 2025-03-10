@@ -1,16 +1,25 @@
 package com.github.cawtoz.minestom.core.event
 
+import com.github.cawtoz.minestom.core.event.registration.BuilderEventRegistration
+import com.github.cawtoz.minestom.core.event.registration.EventRegistration
+import com.github.cawtoz.minestom.core.event.registration.SimpleEventRegistration
 import net.minestom.server.event.Event
-import net.minestom.server.event.EventNode
 import net.minestom.server.event.EventListener
 
 /**
- * Base class for event handlers.
- * This class allows grouping multiple event listeners and registering them easily.
+ * Base class for managing event handlers.
+ * This class allows grouping multiple event listeners and registering them efficiently.
+ *
+ * @param eventSetup A lambda function where events should be registered.
+ * @param nodeName Optional event node name where the handler should be registered. If null, it uses the global handler.
  */
-abstract class EventHandler(eventSetup: EventHandler.() -> Unit) {
+abstract class EventHandler(eventSetup: EventHandler.() -> Unit, val nodeName: String? = null) {
 
-    val eventListeners = mutableListOf<EventListener<out Event>>()
+    /**
+     * List of event registrations to be processed when registering the handler.
+     */
+    @PublishedApi
+    internal val eventRegistrations = mutableListOf<EventRegistration<out Event>>()
 
     init {
         eventSetup()
@@ -18,42 +27,23 @@ abstract class EventHandler(eventSetup: EventHandler.() -> Unit) {
 
     /**
      * Registers a simple event listener.
-     * @param T The event type.
-     * @param handler The function that handles the event.
+     *
+     * @param T The type of event to listen for.
+     * @param handler The function that handles the event when triggered.
      */
-    inline fun <reified T : Event> onEvent(
-        noinline handler: (T) -> Unit
-    ) {
-        val eventListener = EventListener.builder(T::class.java).handler(handler).build()
-        eventListeners.add(eventListener)
+    inline fun <reified T : Event> onEvent(noinline handler: (T) -> Unit) {
+        eventRegistrations.add(SimpleEventRegistration(T::class.java, nodeName, handler))
     }
 
     /**
      * Registers an event listener using a builder pattern.
-     * @param T The event type.
+     * This allows additional customization of the event listener.
+     *
+     * @param T The type of event to listen for.
      * @param builder The builder function to configure the event listener.
      */
-    inline fun <reified T : Event> on(
-        builder: EventListener.Builder<T>.() -> Unit
-    ) {
-        val eventListener = EventListener.builder(T::class.java).apply(builder).build()
-        eventListeners.add(eventListener)
-    }
-
-    /**
-     * Registers all stored event listeners into an event node.
-     * @param eventNode The event node where the listeners will be added.
-     */
-    fun register(eventNode: EventNode<Event>) {
-        eventListeners.forEach { eventNode.addListener(it) }
-    }
-
-    /**
-     * Unregisters all stored event listeners from an event node.
-     * @param eventNode The event node from which the listeners will be removed.
-     */
-    fun unregister(eventNode: EventNode<Event>) {
-        eventListeners.forEach { eventNode.removeListener(it) }
+    inline fun <reified T : Event> onBuilderEvent(noinline builder: EventListener.Builder<T>.() -> Unit) {
+        eventRegistrations.add(BuilderEventRegistration(T::class.java, nodeName, builder))
     }
 
 }
