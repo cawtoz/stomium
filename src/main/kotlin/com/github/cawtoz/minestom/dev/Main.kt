@@ -1,6 +1,6 @@
 package com.github.cawtoz.minestom.dev
 
-import com.github.cawtoz.minestom.core.event.EventBus
+import com.github.cawtoz.minestom.core.event.EventManager
 import net.minestom.server.MinecraftServer
 import net.minestom.server.coordinate.Pos
 import net.minestom.server.event.player.AsyncPlayerConfigurationEvent
@@ -14,13 +14,14 @@ fun main() {
 
     instanceContainer.setGenerator { it.modifier().setBlock(0, 99, 0, Block.BEDROCK) }
 
-    EventBus.registerEvent<AsyncPlayerConfigurationEvent> { event ->
+    EventManager.onEvent<AsyncPlayerConfigurationEvent> { event ->
         event.spawningInstance = instanceContainer
         val player = event.player
         player.respawnPoint = Pos(0.5, 100.0, 0.5)
     }
 
-    EventBus.registerHandler(ExampleEventHandler())
+    exampleEvents()
+    EventManager.registerHandler(ExampleEventHandler())
 
     minecraftServer.start("0.0.0.0", 25565)
 
