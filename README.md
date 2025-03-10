@@ -1,4 +1,4 @@
-# Minestone Core
+# Minestom Core
 
 This is a development project based on **[Minestom](https://minestom.net/)**, a lightweight and highly customizable Minecraft server. The main goal is to create a set of utilities to simplify the development of Minecraft servers.
 
