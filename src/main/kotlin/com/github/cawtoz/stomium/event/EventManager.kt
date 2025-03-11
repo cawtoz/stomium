@@ -1,8 +1,8 @@
-package com.github.cawtoz.minestom.core.event
+package com.github.cawtoz.stomium.event
 
-import com.github.cawtoz.minestom.core.event.registration.BuilderEventRegistration
-import com.github.cawtoz.minestom.core.event.registration.EventRegistration
-import com.github.cawtoz.minestom.core.event.registration.SimpleEventRegistration
+import com.github.cawtoz.stomium.event.registration.BuilderEventRegistration
+import com.github.cawtoz.stomium.event.registration.EventRegistration
+import com.github.cawtoz.stomium.event.registration.SimpleEventRegistration
 import net.minestom.server.MinecraftServer
 import net.minestom.server.event.Event
 import net.minestom.server.event.EventListener

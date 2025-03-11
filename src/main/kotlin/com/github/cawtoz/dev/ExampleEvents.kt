@@ -1,7 +1,7 @@
-package com.github.cawtoz.minestom.dev
+package com.github.cawtoz.dev
 
-import com.github.cawtoz.minestom.core.event.EventHandler
-import com.github.cawtoz.minestom.core.event.EventManager
+import com.github.cawtoz.stomium.event.EventHandler
+import com.github.cawtoz.stomium.event.EventManager
 import net.minestom.server.entity.Player
 import net.minestom.server.event.entity.EntityAttackEvent
 import net.minestom.server.event.player.PlayerChatEvent

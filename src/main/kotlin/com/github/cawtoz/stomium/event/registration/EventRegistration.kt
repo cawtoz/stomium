@@ -1,4 +1,4 @@
-package com.github.cawtoz.minestom.core.event.registration
+package com.github.cawtoz.stomium.event.registration
 
 import net.minestom.server.event.Event
 
