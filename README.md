@@ -1,16 +1,19 @@
-# Minestom Core
+# Stomium - Minestom Server
 
-This is a development project based on **[Minestom](https://minestom.net/)**, a lightweight and highly customizable Minecraft server. The main goal is to create a set of utilities to simplify the development of Minecraft servers.
+Stomium is a development project built with **Kotlin** that adds new utilities and features on top of **[Minestom](https://minestom.net/)**, a lightweight and highly customizable Minecraft server. The main goal is to simplify the development of Minecraft servers by providing additional modules and systems.
+
+---
 
 ## 🚀 Current Features
-- **Event module** to easily register and manage events.
+- **Event module**: Easily register and manage events.
+- **Extension system**: Dynamically load, update, and manage server extensions.
 
 ## 🔧 Future Plans
-- **Menu system** to create and manage interactive GUIs easily.
-- **Item utilities** for simplified item creation and customization.
-- **Command system** to facilitate the registration and handling of commands.
-- **World management** for efficient instance and terrain handling.
-- **Custom events** to allow easy creation and management of custom events.
+- **Menu system**: Create and manage interactive GUIs easily.
+- **Item utilities**: Simplify item creation and customization.
+- **Command system**: Facilitate registration and handling of commands.
+- **World management**: Efficient instance and terrain handling.
+- **Custom events**: Allow easy creation and management of custom events.
 
 ---
 
